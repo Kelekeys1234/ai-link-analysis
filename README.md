@@ -73,6 +73,33 @@ Open `http://localhost:4000/docs`. The health endpoint is `GET /health`.
 
 ## Request
 
+### Live deployment
+
+- **Base URL:** https://ai-link-analysis.fastapicloud.dev
+- **API endpoint:** `POST https://ai-link-analysis.fastapicloud.dev/link-analysis`
+- **API documentation:** https://ai-link-analysis.fastapicloud.dev/docs
+- **Health check:** https://ai-link-analysis.fastapicloud.dev/health
+
+### Postman
+
+Create a `POST` request to `https://ai-link-analysis.fastapicloud.dev/link-analysis`, set the `Content-Type` header to `application/json`, and choose **Body → raw → JSON**:
+
+```json
+{
+  "url": "https://www.shopify.com"
+}
+```
+
+The same request from a terminal:
+
+```bash
+curl -X POST 'https://ai-link-analysis.fastapicloud.dev/link-analysis' \
+  --header 'Content-Type: application/json' \
+  --data '{"url":"https://www.shopify.com"}'
+```
+
+### Local request
+
 ```bash
 curl -X POST http://localhost:4000/link-analysis \
   -H 'Content-Type: application/json' \
@@ -142,4 +169,4 @@ The estimate excludes retries, taxes, and separately billed features; actual tok
 
 ## Deployment and submission
 
-Run with `uvicorn app.main:app --host 0.0.0.0 --port 4000`. Deploy to a Python-capable host, configure `GEMINI_API_KEY` as a secret, and expose HTTPS. No hosting, GitHub, or applicant account credentials were available in this workspace, so no public deployment or repository publication is claimed here. After deployment, share the live base URL, `/docs`, and repository URL in the application email. Do not commit `.env` or API keys.
+The application is deployed at **https://ai-link-analysis.fastapicloud.dev**. Configure `GEMINI_API_KEY` in the FastAPI Cloud app's secret/environment settings; never commit the key or a local `.env` file. The live API docs are at https://ai-link-analysis.fastapicloud.dev/docs. For local use, run with `uvicorn app.main:app --host 0.0.0.0 --port 4000`.
